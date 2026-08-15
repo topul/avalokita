@@ -1,0 +1,88 @@
+/* ══════════════════════════════════════════
+   道门主题 · 玉青水墨 · 清静幽玄
+   ══════════════════════════════════════════ */
+
+/* 山门右扇 */
+.door-t{color:#8fd8c8;--door-glow:rgba(95,174,159,.13)}
+.door-t .door-name{color:#cdefe4}
+.door-t:hover{box-shadow:0 18px 60px -32px rgba(143,216,200,.6)}
+
+body[data-tradition="tao"]{
+  --bg-0:#05090c;
+  --bg-1:#0b1a20;
+  --bg-2:#030608;
+  --ink:#e4efee;
+  --ink-2:#a5bcb9;
+  --ink-3:#6d8380;
+  --gold:#9fdcca;
+  --gold-soft:#d9f4ea;
+  --accent:#c9a44c;
+  --line:rgba(159,220,202,.15);
+  --line-2:rgba(159,220,202,.3);
+  --surface:rgba(214,244,238,.035);
+  --surface-2:rgba(214,244,238,.075);
+  --glow:rgba(140,222,203,.32);
+
+  --pot-1:#3f5a56;
+  --pot-2:#16262a;
+  --pot-line:#a9ded0;
+  --stick:#7d8b76;
+  --flame:#ffd79a;
+  --smoke:206,232,226;
+  --bead:#1f4a48;
+  --bead-hi:#a9e8d5;
+  --thread:#9fdcca;
+
+  --font-title:"Kaiti SC","STKaiti","KaiTi","Baoli SC","Songti SC","Noto Serif CJK SC",serif;
+  --font-body:"Kaiti SC","STKaiti","KaiTi","Songti SC","Noto Serif CJK SC",serif;
+}
+
+/* 道门字距略舒展，楷意更明 */
+body[data-tradition="tao"] .p-title{letter-spacing:.34em;text-indent:.34em}
+body[data-tradition="tao"] .hall-title b{letter-spacing:.3em;text-indent:.3em}
+
+/* 清光 */
+body[data-tradition="tao"] .shrine-glow{
+  background:
+    radial-gradient(44% 40% at 50% 44%,rgba(196,240,228,.34),transparent 70%),
+    radial-gradient(72% 62% at 50% 54%,rgba(70,150,140,.16),transparent 72%);
+  animation:tGlow 11s ease-in-out infinite;
+}
+@keyframes tGlow{0%,100%{opacity:.5}50%{opacity:.8}}
+
+/* 八卦缓转 */
+body[data-tradition="tao"] .bagua{transform-origin:300px 250px;animation:baguaSpin 220s linear infinite}
+@keyframes baguaSpin{to{transform:rotate(-360deg)}}
+body[data-tradition="tao"] .clouds{animation:cloudDrift 9s ease-in-out infinite}
+@keyframes cloudDrift{0%,100%{opacity:.55;transform:translateX(-6px)}50%{opacity:.9;transform:translateX(6px)}}
+
+/* 云磬的金石涟漪 */
+body[data-tradition="tao"] .ripple{border-color:rgba(169,232,213,.75)}
+
+/* 香案：青石纹 */
+body[data-tradition="tao"] .altar::after{
+  content:"";position:absolute;left:50%;bottom:6%;width:86%;height:6px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(159,220,202,.4) 14%,rgba(159,220,202,.6) 50%,rgba(159,220,202,.4) 86%,transparent);
+  box-shadow:0 6px 20px -8px rgba(159,220,202,.5);
+}
+
+/* 竖排楹联 */
+body[data-tradition="tao"] .stage::before,
+body[data-tradition="tao"] .stage::after{
+  position:fixed;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;font-family:var(--font-title);
+  font-size:15px;letter-spacing:.5em;color:rgba(159,220,202,.26);
+  pointer-events:none;z-index:2;display:none;
+}
+body[data-tradition="tao"] .stage::before{content:"上善若水";left:calc(var(--rail) + 26px)}
+body[data-tradition="tao"] .stage::after{content:"抱朴守一";right:26px}
+@media (min-width:1220px){
+  body[data-tradition="tao"] .stage::before,
+  body[data-tradition="tao"] .stage::after{display:block}
+}
+
+/* 三清位牌 */
+body[data-tradition="tao"] .tablet{background:linear-gradient(180deg,rgba(18,38,40,.85),rgba(6,14,16,.65))}
+body[data-tradition="tao"] .tassel{stroke:#c9a44c}
+body[data-tradition="tao"] .vow{letter-spacing:.3em}

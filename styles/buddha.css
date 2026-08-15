@@ -1,0 +1,88 @@
+/* ══════════════════════════════════════════
+   佛门主题 · 金褐檀香 · 庄严肃穆
+   ══════════════════════════════════════════ */
+
+/* 山门左扇 */
+.door-b{color:#e8c07a;--door-glow:rgba(232,181,82,.14)}
+.door-b .door-name{color:#f3dcae}
+.door-b:hover{box-shadow:0 18px 60px -32px rgba(240,197,121,.75)}
+
+body[data-tradition="buddha"]{
+  --bg-0:#0d0906;
+  --bg-1:#241609;
+  --bg-2:#070503;
+  --ink:#f0e5d1;
+  --ink-2:#bdae93;
+  --ink-3:#847865;
+  --gold:#e0b165;
+  --gold-soft:#f7e2b4;
+  --accent:#ad3b21;
+  --line:rgba(240,206,148,.15);
+  --line-2:rgba(240,206,148,.32);
+  --surface:rgba(255,238,206,.038);
+  --surface-2:rgba(255,238,206,.078);
+  --glow:rgba(244,196,110,.4);
+
+  --pot-1:#7a5a31;
+  --pot-2:#3b2814;
+  --pot-line:#f0cd90;
+  --stick:#9a7048;
+  --flame:#ffcb5e;
+  --smoke:242,215,168;
+  --bead:#6f3f1d;
+  --bead-hi:#f4cd85;
+  --thread:#e0b165;
+
+  --font-title:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC","SimSun",serif;
+  --font-body:"Songti SC","STSong","Noto Serif CJK SC","Source Han Serif SC",serif;
+}
+
+/* 佛光呼吸 */
+body[data-tradition="buddha"] .shrine-glow{
+  background:
+    radial-gradient(46% 42% at 50% 40%,rgba(255,226,168,.5),transparent 70%),
+    radial-gradient(70% 60% at 50% 52%,rgba(226,150,54,.16),transparent 72%);
+  animation:bGlow 8s ease-in-out infinite;
+}
+@keyframes bGlow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.03)}}
+
+/* 顶栏与导航的暖色 */
+body[data-tradition="buddha"] .hall-top{border-bottom-color:rgba(240,206,148,.2)}
+
+/* 木鱼击打的暖色涟漪 */
+body[data-tradition="buddha"] .ripple{border-color:rgba(244,196,110,.8)}
+
+/* 莲台余晖 */
+body[data-tradition="buddha"] .panel[data-panel="bow"] .shrine::after{
+  content:"";position:absolute;left:50%;bottom:2%;width:70%;height:12%;
+  transform:translateX(-50%);
+  background:radial-gradient(50% 60% at 50% 50%,rgba(244,196,110,.28),transparent 72%);
+  filter:blur(3px);pointer-events:none;
+}
+
+/* 供桌红案 */
+body[data-tradition="buddha"] .altar::after{
+  content:"";position:absolute;left:50%;bottom:6%;width:86%;height:8px;
+  transform:translateX(-50%);
+  background:linear-gradient(90deg,transparent,rgba(173,59,33,.7) 12%,rgba(173,59,33,.85) 50%,rgba(173,59,33,.7) 88%,transparent);
+  box-shadow:0 6px 22px -6px rgba(173,59,33,.7);
+}
+
+/* 竖排楹联（宽屏装饰） */
+body[data-tradition="buddha"] .stage::before,
+body[data-tradition="buddha"] .stage::after{
+  position:fixed;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;font-family:var(--font-title);
+  font-size:15px;letter-spacing:.5em;color:rgba(240,206,148,.26);
+  pointer-events:none;z-index:2;display:none;
+}
+body[data-tradition="buddha"] .stage::before{content:"诸恶莫作";left:calc(var(--rail) + 26px)}
+body[data-tradition="buddha"] .stage::after{content:"众善奉行";right:26px}
+@media (min-width:1220px){
+  body[data-tradition="buddha"] .stage::before,
+  body[data-tradition="buddha"] .stage::after{display:block}
+}
+
+/* 念珠：菩提木质感 */
+body[data-tradition="buddha"] .ring-mantra{font-size:20px}
+body[data-tradition="buddha"] .tassel{stroke:#ad3b21}
