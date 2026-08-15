@@ -37,7 +37,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%;touch-action:manipulation;-webkit-text-size-adjust:100%}
 body{
   margin:0;
   font-family:var(--font-body);
@@ -61,7 +61,14 @@ body::after{
   opacity:.9;
 }
 button{font-family:inherit;color:inherit;cursor:pointer;border:0;background:none}
-textarea{font-family:inherit}
+textarea{font-family:inherit;scroll-margin-bottom:130px}
+
+/* 触摸交互优化：禁用长按选择 / 右键菜单 / 双击缩放，输入框保持可编辑 */
+.mat,.rail,.dchip,.btn,.chip,.lnk,.knock-obj,.ring,.door,.door-cta,.card,.obj,.stat,.deity-pick{
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+textarea,input{-webkit-user-select:text;user-select:text}
+svg{-webkit-user-drag:none;user-select:none}
 h1,h2,h3,p,ul,li{margin:0;padding:0}
 ul{list-style:none}
 [hidden]{display:none!important}
@@ -88,7 +95,7 @@ ul{list-style:none}
 
 /* ══════════ 山门 ══════════ */
 .gate{
-  position:relative;z-index:1;height:100dvh;overflow-y:auto;
+  position:relative;z-index:1;height:100vh;height:100dvh;overflow-y:auto;overscroll-behavior-y:contain;
   display:flex;align-items:center;justify-content:center;
   padding:clamp(20px,4vw,48px) clamp(16px,4vw,40px);
 }
@@ -161,7 +168,7 @@ ul{list-style:none}
 }
 
 /* ══════════ 殿堂骨架 ══════════ */
-.hall{position:relative;z-index:1;height:100dvh;display:flex;flex-direction:column}
+.hall{position:relative;z-index:1;height:100vh;height:100dvh;display:flex;flex-direction:column}
 .hall-top{
   display:flex;align-items:center;gap:14px;
   padding:12px clamp(14px,3vw,28px);border-bottom:1px solid var(--line);
@@ -210,7 +217,7 @@ ul{list-style:none}
   background:linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
-.stage{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin}
+.stage{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior-y:contain;scrollbar-width:thin}
 .stage::-webkit-scrollbar{width:6px}
 .stage::-webkit-scrollbar-thumb{background:var(--line-2)}
 .panel{
@@ -512,6 +519,13 @@ input[type=range]::-moz-range-thumb{
 .course-act{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .course-note{font-size:11px;color:var(--ink-3);opacity:.7;text-align:center;max-width:34em;line-height:1.9}
 
+/* ══════════ 移动端（≤899） ══════════ */
+@media (max-width:899px){
+  .panel{padding-bottom:calc(64px + env(safe-area-inset-bottom) + 16px)}
+  .rail{z-index:5}
+  .mat-ring,.mat-face{pointer-events:none}
+}
+
 /* ══════════ 桌面端 ══════════ */
 @media (min-width:900px){
   .hall-body{flex-direction:row}
@@ -531,10 +545,30 @@ input[type=range]::-moz-range-thumb{
 @media (min-width:1180px){
   .panel[data-panel="bow"],.panel[data-panel="incense"]{padding-top:26px}
 }
-@media (max-width:420px){
+@media (max-width:640px){
+  .hall-top{gap:8px;padding:10px 12px}
+  .hall-title b{font-size:15px;letter-spacing:.2em}
+  .lnk{padding:6px 9px;font-size:11px;letter-spacing:.08em}
+  .merit{gap:5px;padding:5px 9px}
+  .merit b{font-size:15px}
+  .hall-tools{gap:5px}
+  .door{padding:16px 18px}
+  .door-emblem{width:70px}
+  .door-name{font-size:24px}
+}
+@media (max-width:560px){
+  .hall-top{flex-wrap:wrap;row-gap:9px}
+  .hall-title{order:0;flex:1 1 100%;text-align:left;align-items:flex-start}
+  .lnk-back{order:1}
+  .hall-tools{order:2;margin-left:auto}
   .hall-title span{display:none}
-  .merit{padding:5px 10px}
-  .stat{min-width:64px}
+}
+@media (max-width:420px){
+  .merit span{display:none}
+  .merit{padding:6px 10px}
+  .stat{min-width:60px}
+  .lnk-back{font-size:11px;padding:6px 8px}
+  .lnk{padding:6px 8px;font-size:10.5px}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.05ms!important}
