@@ -82,7 +82,6 @@ body[data-tradition="tao"] .stage::after{content:"抱朴守一";right:26px}
   body[data-tradition="tao"] .stage::after{display:block}
 }
 
-/* 三清位牌 */
-body[data-tradition="tao"] .tablet{background:linear-gradient(180deg,rgba(18,38,40,.85),rgba(6,14,16,.65))}
-body[data-tradition="tao"] .tassel{stroke:#c9a44c}
+/* 神像选择器 · 道门主题微调 */
+body[data-tradition="tao"] .dchip.on{box-shadow:0 0 22px -5px var(--glow)}
 body[data-tradition="tao"] .vow{letter-spacing:.3em}

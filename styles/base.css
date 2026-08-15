@@ -276,29 +276,33 @@ ul{list-style:none}
   opacity:.55;filter:blur(6px);transition:opacity .8s;
 }
 .shrine.lit .shrine-glow{opacity:1}
-.art{position:absolute;inset:0;display:none}
+.art{position:absolute;inset:0;display:block}
 .art svg{width:100%;height:100%;display:block;overflow:visible}
-body[data-tradition="buddha"] .art-b,
-body[data-tradition="tao"] .art-t{display:block}
-.rays-spin{transform-origin:300px 258px;animation:spin 90s linear infinite}
-.gt-spin,.taiji{transform-origin:center;animation:spin 46s linear infinite}
-.taiji{transform-origin:300px 250px}
+.spin-slow{transform-box:fill-box;transform-origin:center;animation:spin 80s linear infinite}
+.bagua-ring{transform-box:fill-box;transform-origin:center;animation:spin 96s linear infinite}
+.lotus-seat{transform-box:fill-box;transform-origin:center;animation:breathe 8s ease-in-out infinite}
+.cloud-seat{transform-box:fill-box;transform-origin:center;animation:breathe 9s ease-in-out infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.lotus{animation:breathe 7s ease-in-out infinite}
-@keyframes breathe{0%,100%{opacity:.75}50%{opacity:1}}
+@keyframes breathe{0%,100%{opacity:.82}50%{opacity:1}}
 
-.tablets{position:absolute;left:50%;top:6%;transform:translateX(-50%);display:flex;gap:clamp(10px,3vw,26px)}
-.tablet{
-  writing-mode:vertical-rl;font-family:var(--font-title);
-  font-size:clamp(11px,1.9vw,14px);letter-spacing:.3em;
-  padding:10px 7px;border:1px solid var(--line);color:var(--ink-2);
-  background:linear-gradient(180deg,rgba(20,32,34,.75),rgba(8,14,16,.6));
-  transition:color .5s,border-color .5s,box-shadow .5s,transform .5s;
+.deity-pick{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(7px,1.8vw,13px);
+  margin:clamp(10px,2.4vw,18px) auto 0;width:min(560px,96vw);
 }
-.tablet:nth-child(2){margin-top:-16px}
-.tablet.on{
-  color:var(--gold-soft);border-color:var(--gold);transform:translateY(-4px);
-  box-shadow:0 0 26px -6px var(--glow);
+.dchip{
+  display:flex;flex-direction:column;align-items:center;gap:1px;
+  padding:7px clamp(10px,2vw,15px);border-radius:13px;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);
+  color:var(--ink-2);transition:color .4s,border-color .4s,box-shadow .4s,transform .3s,background .4s;
+  font-family:var(--font-title);
+}
+.dchip b{font-weight:400;font-size:clamp(12px,2vw,15px);letter-spacing:.06em}
+.dchip .dc-kind{font-size:9.5px;letter-spacing:.12em;color:var(--ink-3);white-space:nowrap}
+.dchip .dc-num{font-size:10px;color:var(--gold-soft);opacity:.85}
+.dchip:hover{background:var(--surface-2);transform:translateY(-2px)}
+.dchip.on{
+  color:var(--gold-soft);border-color:var(--gold);transform:translateY(-3px);
+  box-shadow:0 0 22px -6px var(--glow);background:color-mix(in srgb,var(--surface) 72%,var(--glow) 28%);
 }
 
 .devotee{position:absolute;left:50%;bottom:-2%;width:clamp(58px,11vw,76px);transform:translateX(-50%);z-index:3}

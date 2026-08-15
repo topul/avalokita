@@ -13,7 +13,7 @@
 
   function blankSide() {
     return {
-      total: { bows: 0, rounds: 0, incense: 0, knocks: 0, knockRounds: 0, beads: 0, laps: 0, merit: 0, dedications: 0 },
+      total: { bows: 0, rounds: 0, incense: 0, knocks: 0, knockRounds: 0, beads: 0, laps: 0, merit: 0, dedications: 0, byDeity: {} },
       day: { date: today(), bows: 0, incense: 0, knocks: 0, beads: 0 },
       cur: { bowSeq: 0, beadPos: 0, knockNow: 0, offerings: [], litSticks: [] },
       wishes: []
@@ -88,6 +88,21 @@
       s.total.merit = Math.max(0, s.total.merit + n);
       save();
       return s.total.merit;
+    },
+
+    /* 按所礼神佛累计拜数 */
+    deityAdd: function (tr, id, n) {
+      var s = side(tr);
+      s.total.byDeity = s.total.byDeity || {};
+      n = n == null ? 1 : n;
+      s.total.byDeity[id] = (s.total.byDeity[id] || 0) + n;
+      save();
+      return s.total.byDeity[id];
+    },
+
+    deityCount: function (tr, id) {
+      var s = side(tr);
+      return (s.total.byDeity && s.total.byDeity[id]) || 0;
     },
 
     cur: function (tr, key, val) {
